@@ -17,6 +17,17 @@ const HomeScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.navigate('Image')} style={styles.buttonStyle}>
             <Text style={{color:'#fff'}}>Go to Image demo</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Counter')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to Counter demo</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Color')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to Color demo</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Square')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to Square demo</Text>
+          </TouchableOpacity>
         </View>
     </View>
   );
