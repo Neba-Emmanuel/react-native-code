@@ -5,27 +5,40 @@ const HomeScreen = ({navigation}) => {
   return (
     <View>
       <Text style={styles.text}>Hello There!</Text>
-      <Button 
-      onPress={() => navigation.navigate('Components')}
-      title="Go to component demo" 
-      style={styles.buttonStyle}/>
+        <View style={styles.body}>
+          <TouchableOpacity onPress={() => navigation.navigate('Components')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to component demo</Text>
+          </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('fList')}>
-        <Text>Go to List demo</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('fList')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to List demo</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Image')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to Image demo</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  body:{
+    flex: 3,
+    alignItems: 'center'
+  },
+
   text: {
     fontSize: 30,
   },
 
   buttonStyle:{
-    width: 50,
-    height: 100,
-    marginTop: 20
+    width: 200,
+    height: 50,
+    alignItems: 'center',
+    backgroundColor: 'green',
+    padding: 10,
+    marginVertical: 20
   }
 });
 
