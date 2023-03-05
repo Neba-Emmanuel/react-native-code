@@ -5,7 +5,7 @@ const CounterScreen = () => {
 const [counter, setCounter] = useState(0);
 
     return (
-        <View>
+        <View style={{flex: 1, alignItems: 'center'}}>
             <TouchableOpacity 
             onPress={() => {
                 setCounter(counter + 1);

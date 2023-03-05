@@ -5,7 +5,7 @@ const ColorScreen = () => {
     const [colors, setColors] = useState([]);
 
     return (
-        <View>
+        <View style={{flex: 1, alignItems: 'center'}}>
             <TouchableOpacity 
             onPress={() => {
                 setColors([...colors, randomRGB()])
