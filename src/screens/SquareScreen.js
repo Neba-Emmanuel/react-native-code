@@ -1,55 +1,48 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import ColorCounter from './components/ColorCounter';
 
 const COLOR_INCREMENT = 15;
-
-const SquareScreen = () => {
-const [red, setRed] = useState(0);
-const [green, setGreen] = useState(0);
-const [blue, setBlue] = useState(0);
-
-const setColor = (color, change) => {
-    // if(color === 'red'){
-    //     if(red + change > 255 || red + change < 0){
-    //         return;
-    //     }
-    //     else{
-    //         setRed(red + change);
-    //     }
-    // }
-    switch(color){
+const reducer = (state, action) => {
+    switch(action.colorToChange){
         case 'red':
-            red + change > 255 || red + change < 0 ? null : setRed(red + change);
-            return;
+            return state.red + action.amount > 255 || state.red + action.amount < 0
+            ? state
+            : { ...state, red: state.red + action.amount};
         case 'green':
-            green + change > 255 || green + change < 0 ? null : setGreen(green + change);
-            return;   
+            return state.green + action.amount > 255 || state.green + action.amount < 0
+            ? state
+            : { ...state, green: state.green + action.amount};
         case 'blue':
-            blue + change > 255 || blue + change < 0 ? null : setBlue(blue + change);
-            return; 
+            return state.green + action.amount > 255 || state.green + action.amount < 0
+            ? state
+            : { ...state, green: state.green + action.amount};
         default:
-            return;
+            return state;
     }
 }
+
+const SquareScreen = () => {
+    const [state, dispatch] = useReducer(reducer, {red: 0, green: 0, blue: 0});
+    const { red, green, blue } = state;
 
     return (
         <View style={{marginHorizontal: 20}}>          
             <ColorCounter 
-                onIncrease={() => {setColor('red',COLOR_INCREMENT)}}
-                onDecrease={() => {setColor('red',-1 * COLOR_INCREMENT)}}
+                onIncrease={() => dispatch({ colorToChange: 'red', amount: COLOR_INCREMENT })}
+                onDecrease={() => dispatch({ colorToChange: 'red', amount: -1 * COLOR_INCREMENT })}
                 color='Red'
                 amount={red}
             />
             <ColorCounter 
-                onIncrease={() => {setColor('green',COLOR_INCREMENT)}}
-                onDecrease={() => {setColor('green',-1 * COLOR_INCREMENT)}}
+                onIncrease={() => dispatch({ colorToChange: 'green', amount: COLOR_INCREMENT })}
+                onDecrease={() => dispatch({ colorToChange: 'green', amount: -1 * COLOR_INCREMENT })}
                 color='Green'
                 amount={green}
             />
             <ColorCounter 
-                onIncrease={() => {setColor('blue',COLOR_INCREMENT)}}
-                onDecrease={() => {setColor('blue',-1 * COLOR_INCREMENT)}}
+                onIncrease={() => dispatch({ colorToChange: 'blue', amount: COLOR_INCREMENT })}
+                onDecrease={() => dispatch({ colorToChange: 'blue', amount: -1 * COLOR_INCREMENT })}
                 color='Blue'
                 amount={blue}
             />
