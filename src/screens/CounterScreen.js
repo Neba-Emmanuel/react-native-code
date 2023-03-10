@@ -29,7 +29,7 @@ const [state, dispatch] = useReducer(reducer, {counter: 0});
             </TouchableOpacity>
 
             <TouchableOpacity
-             onPress={() => dispatch({type: 'decrement', payload: -1})}
+             onPress={() => dispatch({type: 'decrement', payload: 1})}
             style={styles.buttonStyle}>
                 <Text>Decrease</Text>
             </TouchableOpacity>
