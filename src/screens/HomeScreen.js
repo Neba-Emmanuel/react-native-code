@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, StyleSheet, View, Button, TouchableOpacity} from "react-native";
+import { Text, StyleSheet, View, Button, TouchableOpacity, ScrollView} from "react-native";
 
 const HomeScreen = ({navigation}) => {
   return (
-    <View>
+    <ScrollView>
       <Text style={styles.text}>Hello There!</Text>
         <View style={styles.body}>
           <TouchableOpacity onPress={() => navigation.navigate('Components')} style={styles.buttonStyle}>
@@ -31,8 +31,11 @@ const HomeScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.navigate('Text')} style={styles.buttonStyle}>
             <Text style={{color:'#fff'}}>Go to Text demo</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Box')} style={styles.buttonStyle}>
+            <Text style={{color:'#fff'}}>Go to Box demo</Text>
+          </TouchableOpacity>
         </View>
-    </View>
+    </ScrollView>
   );
 };
 
